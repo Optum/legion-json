@@ -1,9 +1,9 @@
-<Insert Project Name Here>
-Copyright 2020 Optum
+Legion::Json(legion-json)
+Copyright 2021 Optum
 
 Project Description:
 ====================
-<Short description of your project>
+A JSON wrapper module for the LegionIO framework
 
 Author(s):
-<List the names and GitHub IDs of the original project authors>
+Esity
