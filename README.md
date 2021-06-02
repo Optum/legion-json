@@ -1,31 +1,43 @@
-# Welcome to your new OSS project
+Legion::Json
+=====
 
-This project currently has the base documentation files required.  Replace this
-file with your own README.md.
+Legion::Json is the JSON wrapper that is used by the LegionIO framework. It gives all other gems and extensions a single 
+json library to use for consistency. It wraps [multi_json](https://rubygems.org/gems/multi_json) and also [json_pure](https://rubygems.org/gems/json_pure)
 
-## Files included
+Additional C extension style json gems can be installed like [oj](https://rubygems.org/gems/oj) and it they should be 
+used automatically. 
 
-**CODE_OF_CONDUCT.md**
+Supported Ruby versions and implementations
+------------------------------------------------
 
-Use without changes
+Legion::Json should work identically on:
 
-**INDIVIDUAL_CONTRIBUTOR_LICENSE.md**
+ * JRuby 9.2+
+ * Ruby 2.4+
 
-Use without changes
 
-**CONTRIBUTING.md**
+Installation and Usage
+------------------------
 
-This file has some portions that are required and others that can be customized.
-Customize the Coding Standards section to mention the languages used by your project.
-Feel free to add any rules and requirements that you would like people to follow
-when contributing to your project.
+You can verify your installation using this piece of code:
 
-**NOTICE.txt**
+```bash
+gem install legion-json
+```
 
-This file is needed if your project is licensed under the Apache 2.0 license.  
-If you are using this license, fill it out according to the prompts.  Otherwise,
-delete this file.
+```ruby
+require 'legion-json'
+json_string = '{"foo":"bar","nested":{"hello":"world"}}'
+Legion::Json.load(json_string)
+Legion::Json.load(json_string, symbolize_keys: false) # symbolize_keys defaults to true
 
-## Additional Repo Updates
+hash = {foo: 'bar', nested: {hello: 'world'}}
+Legion::Json.dump(hash)
+Legion::Json.dump(hash, )
 
-Make sure that you have a project description and appropriate repository topics.
+```
+
+Authors
+----------
+
+* [Matthew Iverson](https://github.com/Esity) - current maintainer
