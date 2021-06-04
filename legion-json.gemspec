@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'legion/json/version'
+require_relative 'lib/legion/json/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'legion-json'
