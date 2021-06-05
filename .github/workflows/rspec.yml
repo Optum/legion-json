@@ -8,19 +8,19 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         ruby: [2.7]
-      runs-on: ${{ matrix.os }}
-      steps:
-        - uses: actions/checkout@v2
-        - uses: ruby/setup-ruby@v1
-          with:
-            ruby-version: ${{ matrix.ruby }}
-            bundler-cache: true
-        - name: RSpec run
-          run: |
-            bash -c "
-              bundle exec rspec
-              [[ $? -ne 2 ]]
-            "
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: RSpec run
+        run: |
+          bash -c "
+            bundle exec rspec
+            [[ $? -ne 2 ]]
+          "
   rspec-all:
     needs: rspec27
     strategy:
@@ -28,11 +28,11 @@ jobs:
       matrix:
         os: [ ubuntu-latest ]
         ruby: [2.4, 2.5, 2.6, '3.0', head, jruby, jruby-head, truffleruby]
-      runs-on: ${{ matrix.os }}
-      steps:
-        - uses: actions/checkout@v2
-        - uses: ruby/setup-ruby@v1
-          with:
-            ruby-version: ${{ matrix.ruby }}
-            bundler-cache: true
-        - run: bundle exec rspec
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - run: bundle exec rspec
