@@ -22,7 +22,7 @@ jobs:
             [[ $? -ne 2 ]]
           "
   rspec-all:
-    needs: rspec27
+    needs: rspec
     strategy:
       fail-fast: false
       matrix:
