@@ -1,0 +1,40 @@
+name: RSpec
+on: [push, pull_request]
+jobs:
+  rspec27:
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: [ 2.7 ]
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - uses: ruby/setup-ruby@v1
+          with:
+            ruby-version: ${{ matrix.ruby }}
+            bundler-cache: true
+        - name: RSpec run
+          run: |
+            bash -c "
+              bundle exec rspec
+              [[ $? -ne 2 ]]
+            "
+  rspec:
+    needs: rspec27
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: [2.4, 2.5, 2.6, '3.0', head, jruby, jruby-head, truffleruby]
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - uses: ruby/setup-ruby@v1
+          with:
+            ruby-version: ${{ matrix.ruby }}
+            bundler-cache: true
+        - name: RSpec run
+          run: |
+            bash -c "
+              bundle exec rspec
+              [[ $? -ne 2 ]]
+            "
