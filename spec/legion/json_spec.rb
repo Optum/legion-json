@@ -13,7 +13,7 @@ RSpec.describe Legion::Json do
   it 'can load a parser for current platform' do
     hash = Legion::JSON.load(@json_string)
     expect(hash).to eq(foo: 'bar')
-    string = Legion::JSON.dump(baz: 'qux')
+    string = Legion::JSON.dump({ baz: 'qux' })
     expect(string).to eq('{"baz":"qux"}')
   end
 
