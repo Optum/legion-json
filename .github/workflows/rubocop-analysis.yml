@@ -19,7 +19,7 @@ jobs:
       - name: Rubocop run --no-doc
         run: |
           bash -c "
-            bundle exec rubocop --require code_scanning --format CodeScanning::SarifFormatter -o rubocop.sarif
+            rubocop --require code_scanning --format CodeScanning::SarifFormatter -o rubocop.sarif
             [[ $? -ne 2 ]]
           "
       - name: Upload Sarif output
